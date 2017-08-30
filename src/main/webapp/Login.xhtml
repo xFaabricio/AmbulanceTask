@@ -25704,13 +25704,13 @@ div[id="growlLogin_container"] {
 			<p class="login-box-msg">Sign in to start your session</p>
 			<p:panel id="login" resizable="true" responsive="true"
 				style="text-align:center">
-				<h:form id="frmLogin" prependId="false">
+				<h:form id="frmLogin" prependId="false" style="margin: -7px; padding-bottom: 10px;">
 					<p:growl id="growlLogin" life="3000" autoUpdate="true" />
 					<h:panelGrid columns="1" cellpadding="10" responsive="true">
 						<div class="form-group has-feedback">
 							<h:outputText value="User" />
 							<p:inputText align="center" class="form-control" size="28"
-								id="j_username" responsive="true" value="#{loginBean.login}" />
+								id="j_username" responsive="true" value="#{loginBean.login}"/>
 							<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 							<p:watermark value="#{messages.usernameText}" for="j_username" />
 						</div>
@@ -25724,7 +25724,7 @@ div[id="growlLogin_container"] {
 							<p:watermark for="j_password" value="#{messages.passwordText}" />
 						</div>
 						<br />
-						<p:captcha label="Captcha" />
+						<p:captcha label="Captcha"/>
 						<br />
 
 						<div class="row">
@@ -25732,14 +25732,14 @@ div[id="growlLogin_container"] {
 								<p:commandButton value="Submit"
 									action="#{loginBean.loginAccess}"
 									actionListener="#{captchaView.submit}" ajax="false"
-									icon="ui-icon-check" />
+									icon="ui-icon-check"/>
 							</div>
 						</div>
 					</h:panelGrid>
 				</h:form>
 			</p:panel>
 			<br />
-			<h:form id="frmCreateNewAccount" prependId="false">
+			<h:form id="frmCreateNewAccount" prependId="false" style="margin-left: 37%">
 				<p:growl id="growl" life="2000" />
 				<p:commandLink responsive="true" id="ajax" update="growl"
 					onclick="PF('dialogNewAccount').show();"

@@ -18,7 +18,7 @@ import javax.faces.event.ValueChangeEvent;
 public class MenuController extends AbstractController<Menu> implements java.io.Serializable {
 
     private static final long serialVersionUID = 7481372634818437093L;
-    private IMenuDAO menuDao;
+    private IMenuDAO<Menu> menuDao;
 
     private String pageLink;
     private String pageName;
