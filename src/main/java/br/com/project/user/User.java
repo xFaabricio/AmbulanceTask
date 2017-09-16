@@ -15,9 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.SQLFunctionRegistry;
@@ -27,7 +30,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name="User")
-@Named	
+@Named
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "User.findAll", query = "SELECT usr FROM User usr"),
+    @NamedQuery(name = "User.findByUserId", query = "SELECT usr FROM User usr WHERE usr.id = :id"),
+    @NamedQuery(name = "User.findByName", query = "SELECT usr FROM User usr WHERE usr.name = :name"),
+    @NamedQuery(name = "User.findByEmail", query = "SELECT usr FROM User usr WHERE usr.email = :email"),
+    @NamedQuery(name = "User.findByLogin", query = "SELECT usr FROM User usr WHERE usr.login = :login")})
 public class User implements Selectable, UserDetails, Serializable{
 	
 	/**

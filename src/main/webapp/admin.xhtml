@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <h:head>
         <meta charset="utf-8"/>
@@ -32,7 +33,7 @@
         <link rel="stylesheet" type="text/css" href="resources/dist/css/skins/skin-black.min.css"/>
         <!-- Theme style -->
         
-        <h:outputStylesheet library="dist" name="css/AdminLTE.min.css"/>
+        <h:outputStylesheet library="css" name="AdminLTE.min.css"/>
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <h:outputStylesheet library="dist" name="css/skins/_all-skins.min.css"/>
@@ -41,14 +42,16 @@
         <!-- jvectormap -->
 <!--         <h:outputStylesheet library="plugins" name="jvectormap/jquery-jvectormap-2.0.3.css"/> -->
         <!-- Date Picker -->
-        <h:outputStylesheet library="plugins" name="datepicker/datepicker3.css"/>
+        <h:outputStylesheet library="datepicker" name="datepicker3.css"/>
         
         <!-- Daterange picker -->
-        <h:outputStylesheet library="plugins" name="daterangepicker/daterangepicker.css"/>
+        <h:outputStylesheet library="daterangepicker" name="daterangepicker.css"/>
         <!-- bootstrap wysihtml5 - text editor -->
         <h:outputStylesheet library="plugins" name="bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"/>
         <h:outputStylesheet library="css" name="nprogress.css"/>
         <h:outputStylesheet library="css" name="pfcrud.css"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="AdminLTE.css"/>
         
         <style type="text/css">
         
@@ -24437,11 +24440,7 @@ table.text-center, table.text-center td, table.text-center th {
         </style>
         
         <style type="text/css">
-        
-                    div[id="growl_container"] {
-                top: 60px;
-                z-index:1001; 
-            }
+  
             div[id="growl_container"] {
                 position:absolute;
                 top:60px;
@@ -24471,8 +24470,7 @@ table.text-center, table.text-center td, table.text-center th {
             }
 
         </style>
-        
-        
+
     </h:head>
     
     
@@ -24845,21 +24843,22 @@ table.text-center, table.text-center td, table.text-center th {
                                                 </a>
                                             </ui:fragment>
                                             <ul class="treeview-menu">
-                                                <ui:repeat value="#{menuController.menuList}" var="subMenu">
+                                                <c:forEach items="#{menuController.menuList}" var="subMenu">
 
                                                     <ui:fragment rendered="#{menu.id == subMenu.topMenuId}">
 
                                                         <li id="li#{subMenu.id}">
-                                                            <p:commandLink action="#{menuController.setPage(subMenu.menuLink,subMenu.menuName)}" update="myPanel,myDashBoard"  onstart="start()" onsuccess="finish()">
+                                                            <h:commandLink action="#{menuController.setPage(subMenu.menuLink,subMenu.menuName)}" update="myPanel,myDashBoard"  onstart="start()" onsuccess="finish()">
                                                                 <i class="fa fa-circle-o"></i>
                                                                 #{subMenu.menuName}
-                                                                <small class="label pull-right bg-aqua">#{countPage.fieldGetValue(subMenu.menuLink)}</small>
-                                                            </p:commandLink>
+                                                                <!-- update="myPanel,myDashBoard"  onstart="start()" onsuccess="finish()" -->
+<!--                                                                 <small class="label pull-right bg-aqua">#{countPage.fieldGetValue(subMenu.menuLink)}</small> -->
+                                                            </h:commandLink>
                                                         </li>      
 
                                                     </ui:fragment>
 
-                                                </ui:repeat>
+                                                </c:forEach>                                              
                                             </ul>
                                         </li>
                                     </ui:fragment>
@@ -24897,7 +24896,7 @@ table.text-center, table.text-center td, table.text-center th {
                 <section class="content">
                     <!--                    <ui:insert name="body"/>                   -->
                     <h:panelGroup id="myPanel" layout="block">
-                        <ui:include src="#{menuController.pageLink}.xhtml"/>
+                        <ui:include src="#{menuController.pageLink}"/>
                     </h:panelGroup>
 
                 </section><!-- /.content -->

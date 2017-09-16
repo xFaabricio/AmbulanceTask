@@ -138,6 +138,10 @@ public class Menu implements Serializable {
         return true;
     }
 
+    public void menuLink(){
+    	setMenuLink(this.menuLink);
+    }
+    
     @Override
     public String toString() {
         return "br.com.project.models.Menu[ id=" + id + " ]";

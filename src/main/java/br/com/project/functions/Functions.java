@@ -5,10 +5,6 @@
  */
 package br.com.project.functions;
 
-/**
- *
- * @author Omer Faruk KURT
- */
 public class Functions {
 
     public Functions() {

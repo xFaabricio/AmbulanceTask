@@ -33,7 +33,7 @@ public class MenuController extends AbstractController<Menu> implements java.io.
     public MenuController() {
         super(Menu.class);
         menuDao = new MenuDAOImpl();
-        pageLink = "blankPage";
+        pageLink = "/blankPage.xhtml";
         pageName = "Main Page";
 
     }

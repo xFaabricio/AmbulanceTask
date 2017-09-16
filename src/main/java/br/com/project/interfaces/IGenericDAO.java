@@ -7,11 +7,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.primefaces.model.SortOrder;
 
-/**
- *
- * @author Omer Faruk KURT
- * @param <T>
- */
 public interface IGenericDAO<T> extends java.io.Serializable {
 
     T create(T t);
