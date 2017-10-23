@@ -14,7 +14,7 @@
 	</beans:bean>
 	
 	<beans:bean id="jsfAccessDeniedHandler" class="br.com.project.system.JsfAccessDeniedHandler">
-	    <beans:property name="loginPath" value="/AcessoNegado.xhtml" />
+	    <beans:property name="loginPath" value="/AccessDenied.xhtml" />
 	    <beans:property name="contextRelative" value="true" />
 	</beans:bean>
 	
@@ -37,7 +37,7 @@
 	
 		<intercept-url pattern="/Home.xhtml" access="hasAnyRole('ADMINISTRATOR')" />
 		<intercept-url pattern="/TemporaryHome.xhtml" access="isAuthenticated()" />
-		<intercept-url pattern="/AcessoNegado.xhtml" access="isAuthenticated()" />
+		<intercept-url pattern="/AccessDenied.xhtml" access="isAuthenticated()" />
 		<intercept-url pattern="/Login.xhtml" access="isAuthenticated()" />
 		<intercept-url pattern="/login.faces" access="permitAll" />
 		<intercept-url pattern="/resources/**" access="permitAll" />
@@ -50,6 +50,7 @@
 	
 	<authentication-manager>
 		<authentication-provider user-service-ref="appUserDetailsService">
+				<!-- TODO -->
 				<!-- <password-encoder hash="md5" /> -->
 		</authentication-provider>
 	</authentication-manager>

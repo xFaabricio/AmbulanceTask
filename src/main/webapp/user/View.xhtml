@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:tab id="UserViewForm"
+                   widgetVar="UserViewDialog"
+                   renderedListener="#{userController.selected != null}">
+
+            <h:outputText value="#{messages.ViewUserLabel_id}"/>
+            <h:outputText value="#{userController.selected.id}" title="#{messages.ViewUserTitle_id}"/>
+
+            <h:outputText value="#{messages.ViewUserLabel_name}"/>
+            <h:outputText value="#{userController.selected.name}" title="#{messages.ViewUserTitle_name}"/>
+
+            <h:outputText value="#{messages.ViewUserLabel_email}"/>
+            <h:outputText value="#{userController.selected.email}" title="#{messages.ViewUserTitle_email}"/>
+
+        </p:tab>
+
+
+    </ui:composition>
+
+</html>
+
+<!--             <h:outputText value="#{messages.ViewUserLabel_lastUpdate}"/> -->
+<!--             <h:outputText value="#{userController.selected.lastUpdate}" title="#{messages.ViewUserTitle_lastUpdate}"> -->
+<!--                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" /> -->

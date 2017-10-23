@@ -10,10 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import br.com.project.user.Group;
+import br.com.project.cdi.CDIServiceLocator;
 import br.com.project.user.User;
 import br.com.project.user.UserRepositoryBean;
-import br.com.project.cdi.CDIServiceLocator;
 
 public class AppUserDetailsService implements UserDetailsService {
 
@@ -34,9 +33,9 @@ public class AppUserDetailsService implements UserDetailsService {
 	private Collection<? extends GrantedAuthority> getGroups(User user) {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 		
-		for (Group group : user.getGroups()) {
-			authorities.add(new SimpleGrantedAuthority(group.getName().toUpperCase()));
-		}
+		
+		authorities.add(new SimpleGrantedAuthority(user.getGroup().getName()));
+		
 		
 		return authorities;
 	}

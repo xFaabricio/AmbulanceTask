@@ -1,7 +1,6 @@
 package br.com.project.user;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -34,7 +33,7 @@ public class UserService implements Serializable{
 	
 	private Group group;
 	
-	public void createNewAccount(String name, String login, String email, String password){
+	public void createNewAccount(String name, String lastName, String login, String email, String password){
 		
 		EntityTransaction entityTransaction = manager.getTransaction();
 		
@@ -44,16 +43,16 @@ public class UserService implements Serializable{
 			
 			user = new User();
 			group = new Group();
-			List<Group> groups = new ArrayList<>();	
 		
 			user.setName(name);
+			user.setLastName(lastName != null ? lastName : "");
 			user.setLogin(login);
 			user.setEmail(email);
 			user.setPassword(password);
 			
 			group = groupRepositoryBean.findGroupByName("USER");
 			
-			if(group==null){
+			if(!group.getName().equals("USER") && group==null){
 				
 				entityTransaction.begin();
 				
@@ -66,13 +65,11 @@ public class UserService implements Serializable{
 				
 			}
 			
-			group = groupRepositoryBean.findGroupByName("USER");
-			groups.add(group);
 			
-//			user.getGroups().add(group);
-			user.setGroups(groups);
+			user.setGroup(group);
+//			user.setGroups(groups);
 			
-			this.manager.persist(this.user);
+			this.manager.persist(user);
 			
 			entityTransaction.commit();
 			

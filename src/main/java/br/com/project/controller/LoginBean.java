@@ -84,17 +84,11 @@ public class LoginBean implements Serializable {
 		
 		String confirmatePassword = this.confirmatePassword;
 		
-		String nameFormat = name;
-		
 		if(password.equals(confirmatePassword)){
 		
 			if(userRepositoryBean.putLogin(login)==null){
-			
-				if(lastName!=null && !lastName.equals("")){
-					nameFormat = nameFormat + " " + lastName;
-				}
 				
-				userService.createNewAccount(nameFormat, login, email, password);
+				userService.createNewAccount(name, lastName, login, email, password);
 			
 			}else{
 				FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "User already exists", "Change Login");

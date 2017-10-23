@@ -41,14 +41,11 @@ private static final long serialVersionUID = 1L;
 
 	public List<User> findUsersBasedOnGroup(String login) {
 		User user = null;
-		Group group = new Group();
 	
 		user = this.manager.createQuery("from User where lower(login) = :login", User.class)
 				.setParameter("login", login.toLowerCase()).getSingleResult();
-		
-		group = groupRepositoryBean.findGroupByName("USER");
-		
-		if(user.getGroups().contains(group)){
+				
+		if(user.getGroup().getName().equals("USER")){
 			return this.manager.createQuery("from User where lower(login) = :login", User.class)
 					.setParameter("login", login.toLowerCase()).getResultList();
 		}else{

@@ -1,9 +1,7 @@
 package br.com.project.user;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.inject.Named;
 import javax.persistence.CascadeType;
@@ -14,11 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -67,17 +64,15 @@ public class User implements Selectable, UserDetails, Serializable{
 	private String name;
 	
 	@Column(name="LAST_NAME", length=4000)
-	@NotNull
-	@Transient
 	private String lastName;
 	
 	
-	@ManyToMany(targetEntity = Group.class, cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = Group.class, cascade = CascadeType.ALL)
 	@JoinTable(name="USER_GROUP",joinColumns= 
 	@JoinColumn(name="USER_ID", referencedColumnName="ID"),	
 	inverseJoinColumns= 
 	@JoinColumn(name="GRUPO_ID", referencedColumnName="ID"))
-	private List<Group> groups = new ArrayList<>();
+	private Group group;
 
 	public Long getId() {
 		return id;
@@ -127,16 +122,17 @@ public class User implements Selectable, UserDetails, Serializable{
 		this.name = name;
 	}
 
-	public List<Group> getGroups() {
-		return groups;
+	
+	public Group getGroup() {
+		return group;
 	}
 
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
+	public void setGroup(Group group) {
+		this.group = group;
 	}
-	
+
 	public User(Long id, String login, String email, String password, String name, String lastName,
-			List<Group> groups) {
+			Group group) {
 		super();
 		this.id = id;
 		this.login = login;
@@ -144,7 +140,7 @@ public class User implements Selectable, UserDetails, Serializable{
 		this.password = password;
 		this.name = name;
 		this.lastName = lastName;
-		this.groups = groups;
+		this.group = group;
 	}
 
 	public User() {

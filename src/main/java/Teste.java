@@ -5,10 +5,12 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import br.com.project.user.Group;
+import br.com.project.user.GroupRepositoryBean;
 import br.com.project.user.User;
 
 public class Teste {
 
+	static GroupRepositoryBean groupRepositoryBean;
 
 	public static void main(String[] args) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("exampleSystem");
@@ -21,19 +23,21 @@ public class Teste {
 		User user = new User();
 		Group group = new Group();
 		
-		group.setName("ADMINISTRATOR");
-		group.setDescription("Administrador do sistema");
-		manager.persist(group);
-		
 		group.setName("USER");
 		group.setDescription("Usuario");
 		manager.persist(group);
 
+		group.setName("ADMINISTRATOR");
+		group.setDescription("Administrador do sistema");
+		manager.persist(group);
+		
 		user.setLogin("MASTER");
 		user.setPassword("MASTER");
 		user.setEmail("master@exampleSystem.com");
 		user.setName("Sr. Master");
+		user.setGroup(groupRepositoryBean.findGroupByName("ADMINISTRATOR"));
 		manager.persist(user);
+		
 		
 		trx.commit();
 	}
