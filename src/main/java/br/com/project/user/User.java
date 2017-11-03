@@ -25,8 +25,10 @@ import org.hibernate.mapping.Selectable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import br.com.project.models.BaseEntity;
+
 @Entity
-@Table(name="User")
+@Table(name="user_system")
 @Named
 @XmlRootElement
 @NamedQueries({
@@ -35,7 +37,7 @@ import org.springframework.security.core.userdetails.UserDetails;
     @NamedQuery(name = "User.findByName", query = "SELECT usr FROM User usr WHERE usr.name = :name"),
     @NamedQuery(name = "User.findByEmail", query = "SELECT usr FROM User usr WHERE usr.email = :email"),
     @NamedQuery(name = "User.findByLogin", query = "SELECT usr FROM User usr WHERE usr.login = :login")})
-public class User implements Selectable, UserDetails, Serializable{
+public class User extends BaseEntity implements Selectable, UserDetails, Serializable{
 	
 	/**
 	 * 
@@ -45,7 +47,7 @@ public class User implements Selectable, UserDetails, Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
-	private Long id;
+	private Short id;
 	
 	@Column(name="LOGIN", length=512)
 	@NotNull
@@ -74,9 +76,6 @@ public class User implements Selectable, UserDetails, Serializable{
 	@JoinColumn(name="GRUPO_ID", referencedColumnName="ID"))
 	private Group group;
 
-	public Long getId() {
-		return id;
-	}
 
 	public String getLastName() {
 		return lastName;
@@ -86,7 +85,11 @@ public class User implements Selectable, UserDetails, Serializable{
 		this.lastName = lastName;
 	}
 
-	public void setId(Long id) {
+	public Short getId() {
+		return id;
+	}
+
+	public void setId(Short id) {
 		this.id = id;
 	}
 
@@ -114,6 +117,14 @@ public class User implements Selectable, UserDetails, Serializable{
 		this.password = password;
 	}
 
+//	public List<User> getUsersSelecteds() {
+//		return usersSelecteds;
+//	}
+//
+//	public void setUsersSelecteds(List<User> usersSelecteds) {
+//		this.usersSelecteds = usersSelecteds;
+//	}
+
 	public String getName() {
 		return name;
 	}
@@ -131,7 +142,7 @@ public class User implements Selectable, UserDetails, Serializable{
 		this.group = group;
 	}
 
-	public User(Long id, String login, String email, String password, String name, String lastName,
+	public User(Short id, String login, String email, String password, String name, String lastName,
 			Group group) {
 		super();
 		this.id = id;
@@ -143,6 +154,18 @@ public class User implements Selectable, UserDetails, Serializable{
 		this.group = group;
 	}
 
+	public User(String login, String email, String name) {
+		super();
+		this.login = login;
+		this.email = email;
+		this.name = name;
+	}
+	
+	
+//	public List<User> getUsers(){
+//		return userRepositoryBean.usuarios();
+//	}
+	
 	public User() {
 		super();
 	}

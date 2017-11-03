@@ -2,12 +2,13 @@ package br.com.project.controller;
 
 import br.com.project.interfaces.IColumnSettings;
 import br.com.project.interfaces.IGenericDAO;
-import br.com.project.dao.impl.ColumnSettingsDAOImpl;
-import br.com.project.dao.impl.GenericDAOImpl;
+import br.com.project.dao.ColumnSettingsDAOImpl;
+import br.com.project.dao.GenericDAOImpl;
 import br.com.project.functions.Functions;
 import br.com.project.models.ColumnModel;
 import br.com.project.models.ColumnSettings;
 import br.com.project.util.jsf.JsfUtil;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;

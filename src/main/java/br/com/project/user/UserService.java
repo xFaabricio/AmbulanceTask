@@ -1,6 +1,7 @@
 package br.com.project.user;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -87,6 +88,15 @@ public class UserService implements Serializable{
 		return userRepositoryBean.findUsersBasedOnGroup(login);
 	}
 	
+	public List<User> getUsers(){
+//		List<User> userView = new ArrayList<User>();
+//		
+//		for(int i=0; i < userRepositoryBean.usuarios().size(); i++){
+//			userView.add(new User(userRepositoryBean.usuarios().get(i).getLogin(), userRepositoryBean.usuarios().get(i).getEmail(), userRepositoryBean.usuarios().get(i).getName()));
+//		}
+		
+		return userRepositoryBean.usuarios();
+	}
 	
 	public User getUser() {
 		return user;

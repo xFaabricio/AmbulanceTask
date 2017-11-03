@@ -1,4 +1,4 @@
-package br.com.project.dao.impl;
+package br.com.project.dao;
 
 import br.com.project.interfaces.IGenericDAO;
 import java.util.List;

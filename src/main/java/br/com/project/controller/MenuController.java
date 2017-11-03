@@ -1,7 +1,6 @@
 package br.com.project.controller;
 
-import br.com.project.dao.impl.MenuDAOImpl;
-
+import br.com.project.dao.MenuDAOImpl;
 import br.com.project.interfaces.IMenuDAO;
 import br.com.project.models.Menu;
 

@@ -41,10 +41,6 @@ public class UserView implements Serializable {
 	
 	private String email;
 	
-	private Long balance;
-	
-	private Long salary;
-	
 	private String groups;
 
 	private List<User> users;
@@ -128,22 +124,6 @@ public class UserView implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Long getBalance() {
-		return balance;
-	}
-
-	public void setBalance(Long balance) {
-		this.balance = balance;
-	}
-
-	public Long getSalary() {
-		return salary;
-	}
-
-	public void setSalary(Long salary) {
-		this.salary = salary;
 	}
 
 	public String getGroups() {

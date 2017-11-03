@@ -1,4 +1,4 @@
-package br.com.project.dao.impl;
+package br.com.project.dao;
 
 import br.com.project.interfaces.IColumnSettings;
 import br.com.project.models.ColumnSettings;

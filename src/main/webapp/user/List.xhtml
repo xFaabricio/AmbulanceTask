@@ -8,18 +8,20 @@
 
     <h:form id="UserListForm" class="form-height">
 
+<!--     	<p:commandButton value="Ajax Submit" id="ajax" styleClass="ui-priority-primary" /> -->
+
         <p:contextMenu id="UserDataTableContextMenu" for="datalist">  
             <p:menuitem value="#{messages.Create}" onclick="document.getElementById('UserListForm:datalist:datalist:createButton').click();" icon="ui-icon-plus"/>
             <p:menuitem value="#{messages.View}" onclick="document.getElementById('UserListForm:datalist:datalist:viewButton').click();" icon="ui-icon-search"/>
             <p:menuitem value="#{messages.Edit}" onclick="document.getElementById('UserListForm:datalist:datalist:editButton').click();" icon="ui-icon-pencil"/>
             <p:menuitem value="#{messages.Delete}" onclick="document.getElementById('UserListForm:datalist:datalist:deleteButton').click();" icon="ui-icon-trash"/>
-            <p:separator/>
-            <p:menuitem value="#{messages.UserMenuItem_UserList}" icon="ui-icon-search"  action="#{userController.navigateUsersList}" disabled="#{empty userController.selected.userList}" ajax="false"/>  
+<!--             <p:separator/> -->
+<!--             <p:menuitem value="#{messages.UserMenuItem_UserList}" icon="ui-icon-search"  action="#{userController.navigateUsersList}" disabled="#{empty userController.selected.userList}" ajax="false"/>   -->
         </p:contextMenu>
 
         <p:dataTable id="datalist"
-                        value="#{userController.lazyList}"
-                        rowKey="#{item.userId}"
+                        var="user"
+                        value="#{userController.users}"
                         selection="#{userController.selected}"
                         filtered="#{userController.filtered}"
                         rowselect=":UserListForm:datalist:datalist:createButton,:UserListForm:datalist:datalist:viewButton,:UserListForm:datalist:datalist:editButton,:UserListForm:datalist:datalist:deleteButton,:UserListForm:UserDataTableContextMenu"
@@ -49,14 +51,13 @@
                 </div>
             </f:facet>
 
-            <p:columns value="#{userController.columns}" var="column" columnIndexVar="colIndex" sortBy="#{item[column.property]}" filterBy="#{item[column.property]}" exportable="#{userController.listVisible[colIndex]}" visible="#{userController.listVisible[colIndex]}" width="#{userController.listWidth[colIndex]}">
+            <p:columns value="#{userController.columns}" var="column" columnIndexVar="colIndex" sortBy="#{userController[column.property]}" filterBy="#{userController[column.property]}" exportable="#{userController.listVisible[colIndex]}" visible="#{userController.listVisible[colIndex]}" width="#{userController.listWidth[colIndex]}">
 
                 <f:facet name="header">
                     <h:outputText value="#{column.header}" />
                 </f:facet>
 
-                <h:outputText value="#{item[column.property]}" >
-                </h:outputText>
+                <h:outputText value="#{userController[column.property]}"/>
 
             </p:columns>
 
