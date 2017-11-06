@@ -12,6 +12,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import br.com.project.models.User;
 import br.com.project.system.Security;
 
 @Named

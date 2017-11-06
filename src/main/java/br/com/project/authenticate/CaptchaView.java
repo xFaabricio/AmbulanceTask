@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import br.com.project.user.User;
+import br.com.project.models.User;
  
 @ManagedBean
 public class CaptchaView {

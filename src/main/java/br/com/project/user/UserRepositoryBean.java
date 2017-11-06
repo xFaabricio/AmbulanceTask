@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+import br.com.project.models.User;
+
 public class UserRepositoryBean implements Serializable {
 	
 private static final long serialVersionUID = 1L;
@@ -17,7 +19,7 @@ private static final long serialVersionUID = 1L;
 	@Inject
 	GroupRepositoryBean groupRepositoryBean;
 	
-	public User byId(Long id) {
+	public User findById(Long id) {
 		return this.manager.find(User.class, id);
 	}
 	

@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import br.com.project.user.User;
+import br.com.project.models.User;
 
 public class UserSystem extends org.springframework.security.core.userdetails.User {
 

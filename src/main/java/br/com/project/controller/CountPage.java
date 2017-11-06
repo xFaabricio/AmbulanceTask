@@ -5,12 +5,11 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -24,13 +23,14 @@ public final class CountPage implements java.io.Serializable {
 
     private static final long serialVersionUID = 7466250594126927225L;
 
+    private int userCount;
+    private int groupCount;
     private int actorCount;
     private int addressCount;
     private int categoryCount;
     private int cityCount;
     private int countryCount;
     private int customerCount;
-    private int filmActorCount;
     private int filmCategoryCount;
     private int filmCount;
     private int filmTextCount;
@@ -38,7 +38,6 @@ public final class CountPage implements java.io.Serializable {
     private int languageCount;
     private int paymentCount;
     private int rentalCount;
-    private int staffCount;
     private int storeCount;
 
     private final static List<String> NOT_COLUMN_NAME_LIST = Arrays.asList("BaseEntity",
@@ -199,9 +198,9 @@ public final class CountPage implements java.io.Serializable {
      *
      * @return
      */
-    public int getFilmActorCount() {
-        return filmActorCount;
-    }
+    public int getUserCount() {
+		return userCount;
+	}
 
     /**
      *
@@ -211,7 +210,7 @@ public final class CountPage implements java.io.Serializable {
         return filmCategoryCount;
     }
 
-    /**
+	/**
      *
      * @return
      */
@@ -263,9 +262,9 @@ public final class CountPage implements java.io.Serializable {
      *
      * @return
      */
-    public int getStaffCount() {
-        return staffCount;
-    }
+    public int getGroupCount() {
+		return groupCount;
+	}
 
     /**
      *
@@ -275,7 +274,7 @@ public final class CountPage implements java.io.Serializable {
         return storeCount;
     }
 
-    /**
+	/**
      *
      * @return
      */

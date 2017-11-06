@@ -10,7 +10,7 @@ import javax.faces.convert.FacesConverter;
 
 import br.com.project.dao.IUserDAO;
 import br.com.project.dao.impl.UserDAOImpl;
-import br.com.project.user.User;
+import br.com.project.models.User;
 import br.com.project.util.jsf.JsfUtil;
 
 

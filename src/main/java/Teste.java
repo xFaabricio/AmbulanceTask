@@ -4,9 +4,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import br.com.project.user.Group;
+import br.com.project.models.Group;
+import br.com.project.models.User;
 import br.com.project.user.GroupRepositoryBean;
-import br.com.project.user.User;
 
 public class Teste {
 

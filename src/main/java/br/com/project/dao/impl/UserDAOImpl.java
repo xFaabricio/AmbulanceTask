@@ -2,7 +2,7 @@ package br.com.project.dao.impl;
 
 import br.com.project.dao.GenericDAOImpl;
 import br.com.project.dao.IUserDAO;
-import br.com.project.user.User;
+import br.com.project.models.User;
 
 public class UserDAOImpl extends GenericDAOImpl<User> implements IUserDAO<User> {
 

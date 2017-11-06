@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.project.user.User;
+import br.com.project.models.User;
 import br.com.project.user.UserRepositoryBean;
 import br.com.project.user.UserService;
 import br.com.project.util.jsf.FacesUtil;

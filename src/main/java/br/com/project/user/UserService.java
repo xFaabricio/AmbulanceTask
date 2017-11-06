@@ -12,6 +12,9 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import br.com.project.models.Group;
+import br.com.project.models.User;
+
 @Named
 @ApplicationScoped
 public class UserService implements Serializable{

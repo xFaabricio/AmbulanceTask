@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+import br.com.project.models.Group;
+
 public class GroupRepositoryBean implements Serializable {
 	
 	/**
@@ -17,7 +19,7 @@ public class GroupRepositoryBean implements Serializable {
 	@Inject
 	private EntityManager manager;
 	
-	public Group porId(Long id) {
+	public Group findById(Long id) {
 		return this.manager.find(Group.class, id);
 	}
 	

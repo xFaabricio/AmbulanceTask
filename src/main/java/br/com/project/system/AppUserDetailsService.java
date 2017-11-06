@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import br.com.project.cdi.CDIServiceLocator;
-import br.com.project.user.User;
+import br.com.project.models.User;
 import br.com.project.user.UserRepositoryBean;
 
 public class AppUserDetailsService implements UserDetailsService {

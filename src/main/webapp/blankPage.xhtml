@@ -14,6 +14,34 @@
                 </div>
                 <div class="panel-body" style="height: 70%;position: absolute;overflow-y: scroll">
                     <div class="row">
+                    	<div class="col-lg-3 col-xs-6">
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>#{countPage.userCount}</h3>
+                                    <p>Users</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/user/List.xhtml','User List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
+                                    <i class="fa fa-arrow-circle-right"></i> More info
+                                </p:commandLink>
+                            </div>
+                        </div>
+                         <div class="col-lg-3 col-xs-6">
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>#{countPage.groupCount}</h3>
+                                    <p>Groups</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-stalker"></i>
+                                </div>
+                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/group/List.xhtml','Group List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
+                                    <i class="fa fa-arrow-circle-right"></i> More info
+                                </p:commandLink>
+                            </div>
+                        </div>
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-yellow">
                                 <div class="inner">
@@ -97,21 +125,7 @@
                                     <i class="fa fa-arrow-circle-right"></i> More info
                                 </p:commandLink>
                             </div>
-                        </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-green">
-                                <div class="inner">
-                                    <h3>#{countPage.filmActorCount}</h3>
-                                    <p>Film Actors</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/filmActor/index','Film Actor List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
+                        </div>                        
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-light-blue">
                                 <div class="inner">
@@ -209,21 +223,7 @@
                                     <i class="fa fa-arrow-circle-right"></i> More info
                                 </p:commandLink>
                             </div>
-                        </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3>#{countPage.staffCount}</h3>
-                                    <p>Staffs</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-stalker"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/staff/index','Staff List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
+                        </div>  
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-teal">
                                 <div class="inner">

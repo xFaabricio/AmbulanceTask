@@ -1,4 +1,4 @@
-package br.com.project.user;
+package br.com.project.models;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -24,8 +24,6 @@ import org.hibernate.dialect.function.SQLFunctionRegistry;
 import org.hibernate.mapping.Selectable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import br.com.project.models.BaseEntity;
 
 @Entity
 @Table(name="user_system")

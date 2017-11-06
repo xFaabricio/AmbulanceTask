@@ -1,4 +1,4 @@
-package br.com.project.user;
+package br.com.project.models;
 
 import java.io.Serializable;
 
@@ -28,7 +28,7 @@ public class Group implements Serializable{
 	@Column(name="DESCR", length=4000)
 	@NotNull
 	private String description;
-		
+
 	public Long getId() {
 		return id;
 	}
