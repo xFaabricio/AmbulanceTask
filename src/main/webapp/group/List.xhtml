@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="GroupListForm" class="form-height">
+
+        <p:contextMenu id="GroupDataTableContextMenu" for="datalist">  
+            <p:menuitem value="#{messages.Create}" onclick="document.getElementById('GroupListForm:datalist:datalist:createButton').click();" icon="ui-icon-plus"/>
+            <p:menuitem value="#{messages.View}" onclick="document.getElementById('GroupListForm:datalist:datalist:viewButton').click();" icon="ui-icon-search"/>
+            <p:menuitem value="#{messages.Edit}" onclick="document.getElementById('GroupListForm:datalist:datalist:editButton').click();" icon="ui-icon-pencil"/>
+            <p:menuitem value="#{messages.Delete}" onclick="document.getElementById('GroupListForm:datalist:datalist:deleteButton').click();" icon="ui-icon-trash"/>
+        </p:contextMenu>
+
+        <p:dataTable id="datalist"
+                        var="group_"
+                        value="#{groupController.groups}"
+                        selection="#{groupController.selected}"
+                        filtered="#{groupController.filtered}"
+                        rowselect=":GroupListForm:datalist:datalist:createButton,:GroupListForm:datalist:datalist:viewButton,:GroupListForm:datalist:datalist:editButton,:GroupListForm:datalist:datalist:deleteButton,:GroupListForm:GroupDataTableContextMenu"
+                        rowDblselect="document.getElementById('GroupListForm:datalist:datalist:editButton').click()"
+                        contextMenu=":GroupListForm:datalist:datalist:createButton :GroupListForm:datalist:datalist:viewButton :GroupListForm:datalist:datalist:editButton :GroupListForm:datalist:datalist:deleteButton"
+                        selectListener="#{groupController.resetParents}">
+
+            <p:ajax event="colResize" listener="#{groupController.onResize}"/>
+
+            <f:facet name="header">
+                <div class="row row-nomargin">
+                    <div class="col-lg-3">
+                        <p:inputText id="globalFilter" onkeyup="PF('datalistWidget').filter()" class="pull-left" style="width: 100%" placeholder="#{messages.enterKeyword}"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <h:outputText value="#{messages.ListGroupTitle}"/>   
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="pull-right">
+                            <p:columnToggler datasource="datalist" trigger="toggler">
+                                <p:ajax event="toggle" listener="#{groupController.onToggle}" />
+                            </p:columnToggler>
+                            <p:commandButton id="toggler" type="button" value="Columns" class="btn-primary" icon="fa fa-list"/>
+                            <p:commandButton value="Save" actionListener="#{groupController.columnSave}" styleClass="btn-success" icon="fa fa-edit"/> <!-- update=":growl,@this" -->     
+                        </div>
+                    </div>
+                </div>
+            </f:facet>
+
+            <p:columns value="#{groupController.columns}" var="column" columnIndexVar="colIndex" sortBy="#{group_[column.property]}" filterBy="#{group_[column.property]}" exportable="#{groupController.listVisible[colIndex]}" visible="#{groupController.listVisible[colIndex]}" width="#{groupController.listWidth[colIndex]}">
+
+                <f:facet name="header">
+                    <h:outputText value="#{column.header}" />
+                </f:facet>
+
+                <h:outputText value="#{group_[column.property]}"/>
+
+            </p:columns>
+
+            <f:facet name="{buttons}">
+                <div class="footer-left">
+                    <p:commandButton id="createButton" styleClass="btn btn-primary" icon="fa fa-plus"   value="#{messages.Create}" actionListener="#{groupController.prepareCreate}" update=":GroupCreateForm:GroupCreateForm" oncomplete="PF('GroupCreateDialog').show()" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="viewButton"   styleClass="btn btn-primary" icon="fa fa-search" value="#{messages.View}" update=":GroupViewForm:GroupViewForm" oncomplete="PF('GroupViewDialog').show()" disabled="#{empty groupController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="editButton"   styleClass="btn btn-primary" icon="fa fa-pencil" value="#{messages.Edit}" update=":GroupEditForm:GroupEditForm" oncomplete="PF('GroupEditDialog').show()" disabled="#{empty groupController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                    <p:commandButton id="deleteButton" styleClass="btn btn-primary" icon="fa fa-trash"  value="#{messages.Delete}" actionListener="#{groupController.delete}" update=":growl,datalist" disabled="#{empty groupController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
+                        <p:confirm header="#{messages.ConfirmationHeader}" message="#{messages.ConfirmDeleteMessage}" icon="fa fa-warning"/>
+                    </p:commandButton>
+                </div>
+            </f:facet>
+
+        </p:dataTable>
+
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>
