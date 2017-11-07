@@ -53,14 +53,6 @@ public class Group implements Serializable{
 		this.description = description;
 	}
 
-//	public List<User> getUsers() {
-//		return users;
-//	}
-//
-//	public void setUsers(List<User> users) {
-//		this.users = users;
-//	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

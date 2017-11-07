@@ -25,9 +25,9 @@ public final class CountPage implements java.io.Serializable {
 
     private int userCount;
     private int groupCount;
+    private int scheduleCount;
     private int actorCount;
     private int addressCount;
-    private int categoryCount;
     private int cityCount;
     private int countryCount;
     private int customerCount;
@@ -166,9 +166,9 @@ public final class CountPage implements java.io.Serializable {
      *
      * @return
      */
-    public int getCategoryCount() {
-        return categoryCount;
-    }
+    public int getScheduleCount() {
+		return scheduleCount;
+	}
 
     /**
      *
@@ -178,7 +178,8 @@ public final class CountPage implements java.io.Serializable {
         return cityCount;
     }
 
-    /**
+
+	/**
      *
      * @return
      */

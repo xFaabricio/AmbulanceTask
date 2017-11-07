@@ -2,11 +2,13 @@ package br.com.project.models;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Named;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -74,6 +77,8 @@ public class User extends BaseEntity implements Selectable, UserDetails, Seriali
 	@JoinColumn(name="GRUPO_ID", referencedColumnName="ID"))
 	private Group group;
 
+	@OneToMany(mappedBy = "user", targetEntity = Schedule.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Schedule> schedule;	
 
 	public String getLastName() {
 		return lastName;
@@ -115,14 +120,6 @@ public class User extends BaseEntity implements Selectable, UserDetails, Seriali
 		this.password = password;
 	}
 
-//	public List<User> getUsersSelecteds() {
-//		return usersSelecteds;
-//	}
-//
-//	public void setUsersSelecteds(List<User> usersSelecteds) {
-//		this.usersSelecteds = usersSelecteds;
-//	}
-
 	public String getName() {
 		return name;
 	}
@@ -134,6 +131,14 @@ public class User extends BaseEntity implements Selectable, UserDetails, Seriali
 	
 	public Group getGroup() {
 		return group;
+	}
+
+	public List<Schedule> getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(List<Schedule> schedule) {
+		this.schedule = schedule;
 	}
 
 	public void setGroup(Group group) {
@@ -159,11 +164,19 @@ public class User extends BaseEntity implements Selectable, UserDetails, Seriali
 		this.name = name;
 	}
 	
-	
-//	public List<User> getUsers(){
-//		return userRepositoryBean.usuarios();
-//	}
-	
+	public User(Short id, String login, String email, String password, String name, String lastName, Group group,
+			List<Schedule> schedule) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.lastName = lastName;
+		this.group = group;
+		this.schedule = schedule;
+	}
+
 	public User() {
 		super();
 	}

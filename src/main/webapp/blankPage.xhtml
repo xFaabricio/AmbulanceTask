@@ -12,7 +12,7 @@
                     <i class="fa fa-cogs">
                     </i>
                 </div>
-                <div class="panel-body" style="height: 70%;position: absolute;overflow-y: scroll">
+                <div class="panel-body" style="height: 70%;position: relative;overflow-y: scroll">
                     <div class="row">
                     	<div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-green">
@@ -43,19 +43,33 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-yellow">
+                            <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>#{countPage.actorCount}</h3>
-                                    <p>Actors</p>
+                                    <h3>#{countPage.scheduleCount}</h3>
+                                    <p>Schedules</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-star"></i>
+                                    <i class="ion ion-clipboard"></i>
                                 </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/actor/index','Actor List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
+                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/schedule/List.xhtml','Schedule List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
                                     <i class="fa fa-arrow-circle-right"></i> More info
                                 </p:commandLink>
                             </div>
                         </div> 
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-yellow"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.actorCount}</h3> -->
+<!--                                     <p>Actors</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="fa fa-star"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/actor/index','Actor List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>  -->
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-aqua">
                                 <div class="inner">
@@ -70,81 +84,67 @@
                                 </p:commandLink>
                             </div>
                         </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-blue">
-                                <div class="inner">
-                                    <h3>#{countPage.categoryCount}</h3>
-                                    <p>Categories</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-clipboard"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/category/index','Category List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>#{countPage.cityCount}</h3>
-                                    <p>Cities</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-document-text"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/city/index','City List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-fuchsia">
-                                <div class="inner">
-                                    <h3>#{countPage.countryCount}</h3>
-                                    <p>Countries</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/country/index','Country List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-gray">
-                                <div class="inner">
-                                    <h3>#{countPage.customerCount}</h3>
-                                    <p>Customers</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/customer/index','Customer List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div>                        
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-light-blue">
-                                <div class="inner">
-                                    <h3>#{countPage.filmCategoryCount}</h3>
-                                    <p>Film Categories</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/filmCategory/index','Film Category List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-danger"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.cityCount}</h3> -->
+<!--                                     <p>Cities</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="ion ion-document-text"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/city/index','City List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>  -->
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-fuchsia"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.countryCount}</h3> -->
+<!--                                     <p>Countries</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="ion ion-stats-bars"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/country/index','Country List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>  -->
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-gray"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.customerCount}</h3> -->
+<!--                                     <p>Customers</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="ion ion-stats-bars"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/customer/index','Customer List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>                         -->
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-light-blue"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.filmCategoryCount}</h3> -->
+<!--                                     <p>Film Categories</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="ion ion-stats-bars"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/filmCategory/index','Film Category List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>  -->
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-maroon">
                                 <div class="inner">
                                     <h3>#{countPage.filmCount}</h3>
-                                    <p>Films</p>
+                                    <p>Images</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-image"></i>
@@ -182,20 +182,20 @@
                                 </p:commandLink>
                             </div>
                         </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-orange">
-                                <div class="inner">
-                                    <h3>#{countPage.filmTextCount}</h3>
-                                    <p>Film Text</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-comments-o"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/filmText/index','Film Text List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-orange"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.filmTextCount}</h3> -->
+<!--                                     <p>Film Text</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="fa fa-comments-o"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/filmText/index','Film Text List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>  -->
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-primary">
                                 <div class="inner">
@@ -210,34 +210,34 @@
                                 </p:commandLink>
                             </div>
                         </div> 
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-purple">
-                                <div class="inner">
-                                    <h3>#{countPage.rentalCount}</h3>
-                                    <p>Rentals</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/rental/index','Rental List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div>  
-                        <div class="col-lg-3 col-xs-6">
-                            <div class="small-box bg-teal">
-                                <div class="inner">
-                                    <h3>#{countPage.storeCount}</h3>
-                                    <p>Stores</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-cubes"></i>
-                                </div>
-                                <p:commandLink class="small-box-footer" action="#{menuController.setPage('/store/index','Store List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
-                                    <i class="fa fa-arrow-circle-right"></i> More info
-                                </p:commandLink>
-                            </div>
-                        </div> 
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-purple"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.rentalCount}</h3> -->
+<!--                                     <p>Rentals</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="ion ion-stats-bars"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/rental/index','Rental List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>   -->
+<!--                         <div class="col-lg-3 col-xs-6"> -->
+<!--                             <div class="small-box bg-teal"> -->
+<!--                                 <div class="inner"> -->
+<!--                                     <h3>#{countPage.storeCount}</h3> -->
+<!--                                     <p>Stores</p> -->
+<!--                                 </div> -->
+<!--                                 <div class="icon"> -->
+<!--                                     <i class="fa fa-cubes"></i> -->
+<!--                                 </div> -->
+<!--                                 <p:commandLink class="small-box-footer" action="#{menuController.setPage('/store/index','Store List')}" update="myPanel,myDashBoard"  onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"> -->
+<!--                                     <i class="fa fa-arrow-circle-right"></i> More info -->
+<!--                                 </p:commandLink> -->
+<!--                             </div> -->
+<!--                         </div>  -->
                     </div>
                 </div>
             </div>
