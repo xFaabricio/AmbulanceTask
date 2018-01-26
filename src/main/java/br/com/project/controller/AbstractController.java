@@ -360,7 +360,7 @@ public class AbstractController<T> {
      * @param event
      */
     public void save(ActionEvent event) {
-        String msg = ResourceBundle.getBundle("/messages").getString(itemClass.getSimpleName() + "Updated");
+        String msg = itemClass.getSimpleName() + "Updated";
         persist(PersistAction.UPDATE, msg);
         if (!isValidationFailed()) {
             selected = null;
@@ -372,7 +372,7 @@ public class AbstractController<T> {
      * @param event
      */
     public void saveNew(ActionEvent event) {
-        String msg = ResourceBundle.getBundle("/messages").getString(itemClass.getSimpleName() + "Created");
+        String msg = itemClass.getSimpleName() + "Created";
         persist(PersistAction.CREATE, msg);
         if (!isValidationFailed()) {
             selected = null;
@@ -384,7 +384,7 @@ public class AbstractController<T> {
      * @param event
      */
     public void delete(ActionEvent event) {
-        String msg = ResourceBundle.getBundle("/messages").getString(itemClass.getSimpleName() + "Deleted");
+        String msg = itemClass.getSimpleName() + "Deleted";
         persist(PersistAction.DELETE, msg);
         if (!isValidationFailed()) {
             selected = null; // Remove selection

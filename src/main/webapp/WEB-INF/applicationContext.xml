@@ -42,6 +42,8 @@
 		<intercept-url pattern="/login.faces" access="permitAll" />
 		<intercept-url pattern="/resources/**" access="permitAll" />
 		<intercept-url pattern="/images/**" access="permitAll" />
+		<intercept-url pattern="/user/List.xhtml" access="hasAnyRole('ADMINISTRATOR')" />
+		<intercept-url pattern="/group/List.xhtml" access="hasAnyRole('ADMINISTRATOR')" />
 		
 		<form-login login-page="/Login.xhtml" authentication-failure-url="/Login.xhtml?accessInvalid=true" 
 			default-target-url="/Home.xhtml" always-use-default-target="true" />

@@ -52,6 +52,10 @@ public class LoginBean implements Serializable {
 	UserRepositoryBean userRepositoryBean;
 	
 	private String login;
+	
+	private String newLogin;
+	
+	private String editLogin;
 
 	public void preRender() {
 		if ("true".equals(request.getParameter("accessInvalid"))) {
@@ -70,7 +74,7 @@ public class LoginBean implements Serializable {
 		this.user = new User();
 	}
 	
-	public void newAccount(){
+	public void saveEditAccount(){
 		
 		String name = this.name;
 		
@@ -83,6 +87,37 @@ public class LoginBean implements Serializable {
 		String email = this.email;
 		
 		String confirmatePassword = this.confirmatePassword;
+		
+		if(login == null){
+			this.login = this.editLogin;
+		}
+		
+		if(password.equals(confirmatePassword)){
+			
+			if(userRepositoryBean.putLogin(login)==null){
+				
+				userService.saveEditAccount(name, lastName, login, email, password);
+			
+			}
+			
+		}
+		
+		
+	}
+
+	public void newAccount(){
+		
+		String name = this.name;
+		
+		String lastName = this.lastName;
+		
+		String password = this.password;
+				
+		String email = this.email;
+		
+		String confirmatePassword = this.confirmatePassword;
+		
+		this.login = this.newLogin;
 		
 		if(password.equals(confirmatePassword)){
 		
@@ -109,6 +144,14 @@ public class LoginBean implements Serializable {
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
+	public String getNewLogin() {
+		return newLogin;
+	}
+
+	public void setNewLogin(String newLogin) {
+		this.newLogin = newLogin;
+	}
 
 	public User getUser() {
 		return user;
@@ -134,6 +177,14 @@ public class LoginBean implements Serializable {
 		this.name = name;
 	}
 
+	public String getEditLogin() {
+		return editLogin;
+	}
+
+	public void setEditLogin(String editLogin) {
+		this.editLogin = editLogin;
+	}
+	
 	public String getLastName() {
 		return lastName;
 	}

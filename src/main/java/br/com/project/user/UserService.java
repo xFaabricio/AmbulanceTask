@@ -1,7 +1,6 @@
 package br.com.project.user;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -36,6 +35,43 @@ public class UserService implements Serializable{
 	private User user;
 	
 	private Group group;
+	
+	public void saveEditAccount(String name, String lastName, String login, String email, String password){
+		
+		EntityTransaction entityTransaction = manager.getTransaction();
+		
+		try {
+		
+			entityTransaction.begin();
+			
+			user = userRepositoryBean.putLogin(login);
+			
+			if(user == null){
+				FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "User Not Found", "User not found or not created.");
+			    FacesContext.getCurrentInstance().addMessage(null, msg);
+			}
+			
+			user.setName(name);
+			user.setLastName(lastName != null ? lastName : "");
+			user.setLogin(login);
+			user.setEmail(email);
+			user.setPassword(password);
+			
+			this.manager.persist(user);
+			
+			entityTransaction.commit();
+			
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "User Created", "User Create. Please try logging in.");
+		    FacesContext.getCurrentInstance().addMessage(null, msg);	
+		} catch (Exception e) {
+			e.printStackTrace();
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "User Create Error", "User not Create. Try Again");
+		    FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
+		
+		
+		
+	}
 	
 	public void createNewAccount(String name, String lastName, String login, String email, String password){
 		

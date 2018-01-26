@@ -23,7 +23,7 @@ private static final long serialVersionUID = 1L;
 		return this.manager.find(User.class, id);
 	}
 	
-	public List<User> usuarios() {
+	public List<User> usuarios() {		
 		return this.manager.createQuery("from User", User.class)
 				.getResultList();
 	}
