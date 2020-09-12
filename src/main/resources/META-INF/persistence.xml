@@ -9,17 +9,17 @@
        		 
             <!-- Conexão com o banco de dados -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://ambulancetaskws-mysqldbserver.mysql.database.azure.com/examplesystem?useSSL=true&amp;serverTimezone=UTC&amp;zeroDateTimeBehavior=convertToNull" />
-			<property name="hibernate.connection.user" value="xFaabricio@ambulancetaskws-mysqldbserver" />
-			<property name="hibernate.connection.password" value="acefnv0912wnrtmihtl0912-A" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/ambulance?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC" />
+			<property name="hibernate.connection.user" value="xFaabricio" />
+			<property name="hibernate.connection.password" value="project" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
             <property name="hibernate.hbm2ddl.auto" value="update"/>
  
             <!--Configuracoes de Debug-->
-			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.format_sql" value="false" />
-			<property name="use_sql_comments" value="false" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="use_sql_comments" value="true" />
 			
 		</properties>
     </persistence-unit>
