@@ -13,8 +13,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.project.Schedule.ScheduleRepositoryBean;
 import br.com.project.models.Schedule;
+import br.com.project.schedule.ScheduleRepositoryBean;
 
 
 @ManagedBean

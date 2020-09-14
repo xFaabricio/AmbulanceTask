@@ -24,4 +24,8 @@
 	    </exception-handler-factory>
 	</factory>
 
+	<lifecycle>
+        <phase-listener>br.com.project.listener.Listener</phase-listener>
+    </lifecycle>
+
 </faces-config>

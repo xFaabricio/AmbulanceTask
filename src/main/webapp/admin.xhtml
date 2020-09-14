@@ -24506,7 +24506,9 @@ table.text-center, table.text-center td, table.text-center th {
                             <!-- Message. Default to the left -->
                             <div class="direct-chat-msg">
                                 <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Fabricio Oliveira</span>
+                                    <span class="direct-chat-name pull-left">
+                                    	<h:outputText value="#{security.nameUser}"/>
+                                    </span>
                                     <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
                                 </div><!-- /.direct-chat-info -->
                                 <p:graphicImage class="direct-chat-img" value="/resources/dist/img/user1-128x128.jpg" alt="message user image"/><!-- /.direct-chat-img -->
@@ -24530,7 +24532,9 @@ table.text-center, table.text-center td, table.text-center th {
                             <!-- Message. Default to the left -->
                             <div class="direct-chat-msg">
                                 <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Fabricio Oliveira</span>
+                                    <span class="direct-chat-name pull-left">
+                                    	<h:outputText value="#{security.nameUser}"/>
+                                    </span>
                                     <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
                                 </div><!-- /.direct-chat-info -->
                                 <p:graphicImage class="direct-chat-img" value="/resources/dist/img/user1-128x128.jpg" alt="message user image"/><!-- /.direct-chat-img -->
@@ -24766,7 +24770,9 @@ table.text-center, table.text-center td, table.text-center th {
 		              <!-- The user image in the navbar-->
 		              <img src="resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image"></img>
 		              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-		              <span class="hidden-xs">Fabricio Oliveira</span>
+		              <span class="hidden-xs">
+		              	<h:outputText value="#{security.nameUser}"/>
+		              </span>
 		            </a>
 		            <ul class="dropdown-menu">
 		              <!-- The user image in the menu -->
@@ -24774,7 +24780,7 @@ table.text-center, table.text-center td, table.text-center th {
 		                <img src="resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"></img>
 		
 		                <p>
-		                  Fabricio Oliveira - Web Developer
+		                  <h:outputText value="#{security.nameAndLastNameUser}"/>
 		                  <small>Member since Nov. 2012</small>
 		                </p>
 		              </li>
@@ -24823,7 +24829,9 @@ table.text-center, table.text-center td, table.text-center th {
                                 <h:graphicImage library="dist" name="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
                             </div>
                             <div class="pull-left info">
-                                <p>Fabricio Oliveira</p>
+                                <p>
+                                	<h:outputText value="#{security.nameAndLastNameUser}"/>
+                                </p>
                                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                             </div>
                         </div>

@@ -23,9 +23,9 @@ import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.SQLFunctionRegistry;
 import org.hibernate.mapping.Selectable;
 
-import br.com.project.Schedule.Gender;
-import br.com.project.Schedule.MaritalStatus;
-import br.com.project.Schedule.Status;
+import br.com.project.schedule.Gender;
+import br.com.project.schedule.MaritalStatus;
+import br.com.project.schedule.Status;
 
 
 @Entity

@@ -72,7 +72,7 @@
         //Sidebar Toggle
       + "<div class='form-group'>"
       + "<label class='control-sidebar-subheading'>"
-      + "<input type='checkbox' data-layout='sidebar-collapse' class='pull-right'/> "
+      + "<input id='hide' type='checkbox' data-layout='sidebar-collapse' class='pull-right'/> "
       + "Toggle Sidebar"
       + "</label>"
       + "<p>Toggle the left sidebar's state (open or collapse)</p>"

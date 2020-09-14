@@ -14,6 +14,29 @@ public class Security {
 //	@Inject
 //	private ExternalContext externalContext;
 	
+//	byte[] profilePicture;
+	
+//	public byte[] getProfilePicture(){
+//		
+//		UserSystem userSystem = getLoggedUser();
+//		User user = userSystem.getUser();
+//		
+//		return null;
+//	}
+	
+	
+	public String getNameAndLastNameUser() {
+		String name = null;
+		
+		UserSystem usuarioLogado = getLoggedUser();
+		
+		if (usuarioLogado != null) {
+			name = usuarioLogado.getUser().getName() + " " + usuarioLogado.getUser().getLastName();
+		}
+		
+		return name;
+	}
+	
 	public String getNameUser() {
 		String name = null;
 		
