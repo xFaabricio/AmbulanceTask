@@ -24,7 +24,6 @@ public class Security {
 //		return null;
 //	}
 	
-	
 	public String getNameAndLastNameUser() {
 		String name = null;
 		
