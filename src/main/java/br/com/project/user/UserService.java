@@ -105,6 +105,11 @@ public class UserService implements Serializable{
 				
 			}
 			
+			this.manager.persist(user);
+			
+			entityTransaction.commit();
+			
+			entityTransaction.begin();
 			
 			user.setGroup(group);
 //			user.setGroups(groups);
