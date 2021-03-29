@@ -98,6 +98,9 @@ public class Schedule extends BaseEntity implements Selectable, Serializable{
 	@NotNull
 	private String CEP;
 	
+	@Column(name="DETAILS", length=4000)
+	private String details;
+	
 	@Column(name="STATUS")
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -225,6 +228,22 @@ public class Schedule extends BaseEntity implements Selectable, Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
 	}
 
 	@Override

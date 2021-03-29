@@ -40,6 +40,7 @@ public class Teste {
 		
 		
 		trx.commit();
+		
 	}
 	
 }

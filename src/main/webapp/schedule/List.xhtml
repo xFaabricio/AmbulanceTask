@@ -10,14 +10,84 @@
 
 <!--     	<p:commandButton value="Ajax Submit" id="ajax" styleClass="ui-priority-primary" /> -->
 
-        <p:contextMenu id="ScheduleDataTableContextMenu" for="datalist">  
-            <p:menuitem value="Create" onclick="document.getElementById('ScheduleListForm:datalist:datalist:createButton').click();" icon="ui-icon-plus"/>
+        <p:contextMenu id="ScheduleDataTableContextMenu" for="datalist">
+        	<p:menuitem value="Create" onclick="PF('dialogNewSchedule').show();" icon="ui-icon-plus" action="#{scheduleBean.loadSchedule}"/>  
+<!--             <p:menuitem value="Create" onclick="document.getElementById('ScheduleListForm:datalist:datalist:createButton').click();" icon="ui-icon-plus"/> -->
 <!--             <p:menuitem value="View" onclick="document.getElementById('ScheduleListForm:datalist:datalist:viewButton').click();" icon="ui-icon-search"/> -->
             <p:menuitem value="Edit" onclick="document.getElementById('ScheduleListForm:datalist:datalist:editButton').click();" icon="ui-icon-pencil"/>
             <p:menuitem value="Delete" onclick="document.getElementById('ScheduleListForm:datalist:datalist:deleteButton').click();" icon="ui-icon-trash"/>
 <!--             <p:separator/> -->
 <!--             <p:menuitem value="#{messages.ScheduleMenuItem_ScheduleList}" icon="ui-icon-search"  action="#{scheduleController.navigateSchedulesList}" disabled="#{empty scheduleController.selected.scheduleList}" ajax="false"/>   -->
         </p:contextMenu>
+
+		<h:form id="frmCreateNewSchedule" prependId="false" style="margin-left:37%">
+			<p:growl id="growlCreate" life="2000" />
+                		
+                <p:dialog header="Create New Schedule" widgetVar="dialogNewSchedule" modal="true" minHeight="100" style="width:700px !important">
+				
+				<p:outputLabel for="newSchedule_name" value="Name: " />
+				<p:inputText id="newSchedule_name" required="true" responsive="true" value="#{scheduleBean.name}" style="margin-bottom:20px; margin-right:10px" />				
+
+				<p:outputLabel for="newSchedule_rg" value="RG: " />
+				<p:inputText id="newSchedule_rg" required="true" responsive="true" value="#{scheduleBean.rg}" style="margin-bottom:20px; margin-right:10px" />
+				
+				<p:outputLabel for="newSchedule_CPF" value="CPF: " />
+				<p:inputText id="newSchedule_CPF" required="true" responsive="true" value="#{scheduleBean.cpf}" style="margin-bottom:20px; margin-right:10px" />				
+				
+				<br/>
+				
+				<p:outputLabel for="newSchedule_birthDate" value="Birth Date: "/>
+                <p:calendar id="newSchedule_birthDate" value="#{scheduleBean.birthDate}" style="margin-right: 15px;"/>
+		
+				<p:outputLabel for="@next" value="Marital Status: "/>
+                <p:selectOneMenu id="newSchedule_maritalStatus" value="#{scheduleBean.maritalStatus}" style="vertical-align:middle;margin-left: 5px;margin-right: 10px;width: 150px !important;">
+                  <f:selectItem itemLabel="Select One" itemValue=""/>
+				  <f:selectItems value="#{maritalStatusBean.maritalStatusValues}" />
+				</p:selectOneMenu>
+    
+    			<p:outputLabel for="@next" value="Gender: "/>
+                <p:selectOneMenu id="newSchedule_gender" value="#{scheduleBean.gender}" style="vertical-align:middle;margin-left: 5px;margin-right: 10px;width: 150px !important;">
+                  <f:selectItem itemLabel="Select One" itemValue=""/>
+				  <f:selectItems value="#{genderBean.genderValues}" />
+				</p:selectOneMenu>
+                            
+                            
+                <br/>
+                <br/>
+				
+				<p:outputLabel for="newSchedule_address" value="Address: " />
+				<p:inputText id="newSchedule_address" required="true" responsive="true" value="#{scheduleBean.address}" style="margin-bottom:20px; margin-right:10px" />				
+				
+				<p:outputLabel for="newSchedule_number" value="Number: " />
+				<p:inputNumber id="newSchedule_number" required="true" responsive="true" value="#{scheduleBean.number}" style="margin-bottom:20px; margin-right:10px" padControl="false" decimalPlaces="0"/>				
+				
+				<p:outputLabel for="newSchedule_city" value="City: " />
+				<p:inputText id="newSchedule_city" required="true" responsive="true" value="#{scheduleBean.city}" style="margin-bottom:20px; margin-right:10px" />				
+				
+				<br/>
+
+				<p:outputLabel for="newSchedule_neighborhood" value="Neighborhood: " />
+				<p:inputText id="newSchedule_neighborhood" required="true" responsive="true" value="#{scheduleBean.neighborhood}" style="margin-bottom:20px; margin-right:10px" />				
+				
+				<p:outputLabel for="newSchedule_nationality" value="Nationality: " />
+				<p:inputText id="newSchedule_nationality" required="true" responsive="true" value="#{scheduleBean.nationality}" style="margin-bottom:20px; margin-right:10px" />				
+				
+				<p:outputLabel for="newSchedule_cep" value="CEP: " />
+				<p:inputText id="newSchedule_cep" required="true" responsive="true" value="#{scheduleBean.cep}" style="margin-bottom:20px; margin-right:10px" />				
+				
+				<br/>
+				
+				<p:separator/>
+				
+				<p:outputLabel for="newSchedule_details" value="Details " />
+				<br/>
+				<p:inputTextarea id="newSchedule_details" responsive="true" value="#{scheduleBean.details}" style="width: 710px;height: 110px !important"/>
+				
+				<br/>
+				
+				<p:commandButton action="#{scheduleBean.newSchedule}" actionListener="#{scheduleController.saveNew}" responsive="true" style="left:80%" value="Create" ajax="false" icon="ui-icon-check" />
+			</p:dialog>
+		</h:form>
 
         <p:dataTable id="datalist"
                         var="schedule_"
@@ -45,7 +115,8 @@
                                 <p:ajax event="toggle" listener="#{scheduleController.onToggle}" />
                             </p:columnToggler>
                             <p:commandButton id="toggler" type="button" value="Columns" class="btn-primary" icon="fa fa-list"/>
-                            <p:commandButton value="Save" actionListener="#{scheduleController.columnSave}" styleClass="btn-success" icon="fa fa-edit"/> <!-- update=":growl,@this" -->     
+<!--                             <p:commandButton value="Save" actionListener="#{scheduleController.columnSave}" styleClass="btn-success" icon="fa fa-edit"/> update=":growl,@this"      -->
+							<p:commandButton value="Create" onclick="PF('dialogNewSchedule').show();" action="#{scheduleBean.loadSchedule}" styleClass="btn-success" icon="fa fa-edit"/> 
                         </div>
                     </div>
                 </div>
@@ -62,8 +133,8 @@
             </p:columns>
 
             <f:facet name="{buttons}">
-                <div class="footer-left">
-                    <p:commandButton id="createButton" styleClass="btn btn-primary" icon="fa fa-plus"   value="Create" actionListener="#{scheduleController.prepareCreate}" update=":ScheduleCreateForm:ScheduleCreateForm" oncomplete="PF('ScheduleCreateDialog').show()" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
+                <div class="footer-left">                
+                    <p:commandButton id="createButton" styleClass="btn btn-primary" icon="fa fa-plus"   value="Create" actionListener="#{scheduleController.prepareCreate}" update=":ScheduleCreateForm:ScheduleCreateForm" oncomplete="PF('ScheduleCreateDialog').show()" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()" onclick="PF('dialogNewSchedule').show();"/>
 <!--                     <p:commandButton id="viewButton"   styleClass="btn btn-primary" icon="fa fa-search" value="View" update=":ScheduleViewForm:ScheduleViewForm" oncomplete="PF('ScheduleViewDialog').show()" disabled="#{empty scheduleController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/> -->
                     <p:commandButton id="editButton"   styleClass="btn btn-primary" icon="fa fa-pencil" value="Edit" update=":ScheduleEditForm:ScheduleEditForm" oncomplete="PF('ScheduleEditDialog').show()" disabled="#{empty scheduleController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()"/>
                     <p:commandButton id="deleteButton" styleClass="btn btn-primary" icon="fa fa-trash"  value="Delete" actionListener="#{scheduleController.delete}" update=":growl,datalist" disabled="#{empty scheduleController.selected}" onstart="PF('Loading').show()" onsuccess="PF('Loading').hide()">
